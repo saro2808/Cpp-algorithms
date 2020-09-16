@@ -1,2 +1,2 @@
-# C-algorithms
+# C++ algorithms
 MIPT 3 semester
