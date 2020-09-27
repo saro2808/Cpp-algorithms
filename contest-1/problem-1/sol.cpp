@@ -1,33 +1,27 @@
 #include <iostream>
-using namespace std;
 
-int five_to(int i) {
-	int n = 1;
-	for (int j = 0; j < i; j++) {
-		n *= 5;
+int Pow(int number, int exponent) {
+	int result = 1;
+	for (int j = 0; j < exponent; j++) {
+		result *= number;
 	}
-	return n;
+	return result;
 }
 
 int main() {
 	int n;
-	cin >> n;
-	int nyu = 0;
+	std::cin >> n;
+	int num_of_zeroes = 0;
 
 	int i = 1;
-	int m;
+	int summand = 1;
 	// Legandre formula
-	while (1) {
-		m = n / five_to(i);
-		if (m > 0) {
-			nyu += m;
-			i++;
-			continue;
-		}
-		break;
+	while (summand > 0) {
+		summand = n / Pow(5, i);
+		num_of_zeroes += summand;
+		i++;
 	}
 
-	cout << nyu << endl;
-	//system("pause");
+	std::cout << num_of_zeroes << std::endl;
 	return 0;
 }

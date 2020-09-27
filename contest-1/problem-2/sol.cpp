@@ -1,21 +1,20 @@
 #include <iostream>
-using namespace std;
 
 int main() {
 	int n, m;
-	cin >> n;
+	std::cin >> n;
 	int *a = new int[n];
 	for (int i = 0; i < n; i++) {
-		cin >> a[i];
+		std::cin >> a[i];
 	}
-	cin >> m;
+	std::cin >> m;
 	int *b = new int[m];
 	for (int i = 0; i < m; i++) {
-		cin >> b[i];
+		std::cin >> b[i];
 	}
 	//
 	int k;
-	cin >> k;
+	std::cin >> k;
 	int num = 0;
 	int mid, left, right;
 	for (int i = 0; i < n; i++) {
@@ -34,10 +33,9 @@ int main() {
 			num++;
 		}
 	}
-	cout << num << endl;
+	std::cout << num << std::endl;
 	//
 	delete[] a;
 	delete[] b;
-	system("pause");
 	return 0;
 }
