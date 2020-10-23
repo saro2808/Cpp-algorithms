@@ -1,41 +1,36 @@
 #include <iostream>
 
 int main() {
-	int n, m;
+	int n, m, k;
 	std::cin >> n;
-	int *a = new int[n];
-	for (int i = 0; i < n; i++) {
-		std::cin >> a[i];
+	int *A = new int[n];
+	for (int i = 0; i < n; ++i) {
+		std::cin >> A[i];
 	}
 	std::cin >> m;
-	int *b = new int[m];
-	for (int i = 0; i < m; i++) {
-		std::cin >> b[i];
+	int *B = new int[m];
+	for (int i = 0; i < m; ++i) {
+		std::cin >> B[i];
 	}
-	//
-	int k;
 	std::cin >> k;
-	int num = 0;
-	int mid, left, right;
-	for (int i = 0; i < n; i++) {
-		left = 0;
-		right = m - 1;
-		while (right - left > 1) {
-			mid = (left + right) / 2;
-			if (a[i] + b[mid] < k) {
-				left = mid;
-			}
-			else {
-				right = mid;
-			}
+
+	int res = 0;
+	int previous_index = 0;
+	for (int j = m - 1; j >= 0; --j) {
+		for (int i = previous_index; i < n && A[i] + B[j] < k; ++i) {
+			++previous_index;
 		}
-		if (a[i] + b[left] == k || a[i] + b[right] == k) {
-			num++;
+		if (previous_index == n) {
+			break;
+		}
+		if (A[previous_index] + B[j] == k) {
+			++res;
 		}
 	}
-	std::cout << num << std::endl;
-	//
-	delete[] a;
-	delete[] b;
+
+	std::cout << res << std::endl;
+
+	delete[] B;
+	delete[] A;
 	return 0;
 }
